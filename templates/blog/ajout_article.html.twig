@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{# {% form_theme formArticle "bootstrap_4_layout.html.twig" %} #}
+
+{% block body %}
+    <style>
+		p{
+            text-align:justify;
+            font-size: 18px;
+            font-weight: bold;
+        }
+	</style>
+		<div class="mt-5">
+			<div class="card card-wrapper">
+				<div class="card card-title text-center p-4 text-black-50">{{title}}</div>
+				<div class="m-auto">
+                    {{ form_start(formArticle) }}
+
+                        {{ form_row(formArticle.title, {
+                            'attr':{
+                                'placeholder':"titre de l'article",
+                                'class':"form-control col-lg-12"
+                            }
+                        }) }}
+                        {{ form_row(formArticle.content, {
+                            'attr':{
+                                'placeholder':"contenue de l'article",
+                                'class':"form-control col-lg-12"
+                            }
+                        }) }}
+                        {{ form_row(formArticle.image, {
+                            'attr':{
+                                'placeholder':"url de l'image",
+                                'class':"form-control col-lg-12"
+                            }
+                        }) }}
+                        <button class="btn btn-info  mb-4 mt-3" type="submit">
+                        {% if editMod %}
+                           Modifier Artcle
+                        {% else %}
+                            Ajouter un article
+                        {% endif %}
+                            
+                        </button>
+					{{ form_end(formArticle) }}
+				</div>
+			</div>
+		</div>
+
+
+{% endblock %}

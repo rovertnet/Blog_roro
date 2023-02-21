@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+		section{
+			margin: auto;
+			padding: 10px;
+			text-align: justify;
+		}
+        .metadata{
+            text-align:justify;
+            font-size: 18px;
+            font-weight: bold;
+        }
+		
+	</style>
+
+   <section class="article row">
+		
+		{% for article in articles %}
+			
+			<article class="col-lg-4 pt-3 mt-3" id="article">
+				<div class="content">
+						<h3> {{ article.title }} </h3>
+						<div class="metadata">Ecrit le {{ article.createdAt | date('d/m/y') }} à {{ article.createdAt | date('H:i') }}  dans la catégorie politique</div>
+						<div class="content">
+							<img src="{{ article.image }}" alt="">
+							<p> {{ article.content | raw }} </p>
+							<a href="{{path('article_id', {'id': article.id})}}" class="btn btn-primary">lire la suite</a>
+						</div>
+				</div>
+			</article>
+
+		{% endfor %}
+
+	</section>
+{% endblock %}
